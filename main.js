@@ -10,29 +10,39 @@ let url = "https://itunes.apple.com/search?term="
 search.addEventListener('keyup', function(e){
 // 3. Create your `fetch` request that is called after a submission
 	let term = search.value
-
 	fetch(url+term)
 		.then(
-	   
 	      function(response) {
 	        if (response.status !== 200) {
 	          console.log(response.status)
 	          return
 	        }
 // 4. Create a way to append the fetch results to your page
-
 			response.json().then(function(data) {
 				let htmlstr = ``
-				console.log(data)
+				data.results.forEach(function(data){
+					htmlstr += `
+					<div class="searchresult">
+							<a href="${data.previewUrl}">
+							<img src="${data.artworkUrl100}"><br>
+							</a>
+					        <span>${data.trackName}</span><br>
+        					<span>${data.artistName}</span>
+     				 </div>
+					`
+				})
 // 5. Create a way to listen for a click that will play the song in the audio play
-			
-
-
-
+				main.innerHTML = htmlstr
+					let albums = document.querySelectorAll('.searchresult a')
+					
+					albums.forEach(function(listen){	
+						listen.addEventListener('click', function(event){
+							event.preventDefault();
+							let url = listen.getAttribute("href");
+							document.querySelector('audio').setAttribute('src',url);		
+						})
+					})
 			})
 			}
 		)
-
-
-
 })
