@@ -1,0 +1,32 @@
+body {
+  background-color: #60d9f1;
+}
+.music-player {
+	width: 800px;
+}
+input {
+	width:800px;
+	line-height: 30px;
+	margin: 20px 0;
+	font-size: 20px;
+}
+.container {
+	width:850px;
+	margin: auto;
+	text-align: center;
+}
+.search {
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	margin: 20px;
+
+}
+.results {
+	text-align: left; 
+	padding:0 20px;
+}
+.resultlist {
+	text-align: center;
+	border:1px solid gray;
+	width: 150px;
+}
